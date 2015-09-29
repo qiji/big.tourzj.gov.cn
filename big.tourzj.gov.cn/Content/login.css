@@ -1,0 +1,97 @@
+﻿@charset "utf-8";
+
+body {
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: "微软雅黑", Dotum, sans-serif;
+    color: #333;
+    padding: 15px;
+    background-color: #999;
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    width: 960px;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+header {
+    height: 40px;
+    clear: both;
+    margin-bottom: 15px;
+}
+
+.clear {
+    clear: both;
+}
+
+
+.logcpname {
+    text-align: center;
+    font-size: 2em;
+    color: #FFF;
+    padding-top: 3em;
+    padding-bottom: 1em;
+    display: block;
+    clear: both;
+    line-height: 2em;
+    height: 2em;
+}
+
+.logblock {
+	font-size: 1em;
+	width: 15em;
+	border-radius: 0.4em;
+	background-color: #FFF;
+	clear: both;
+	height: 6em;
+	line-height: 2em;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	padding-top: 1em;
+	padding-right: 2em;
+	padding-bottom: 1em;
+	padding-left: 2em;
+}
+
+.logcinput {
+	float: right;
+	width: 15em;
+}
+.logintinput {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;    
+    width:16em;
+}
+
+.logerrorinfo {
+   color:red;
+   font-size:small;   
+}
+
+.bulogin {
+	color: #FFF;
+	text-decoration: none;
+	background-color: #F90;
+	border-radius: 0.4em;
+	box-shadow: 0.1em 0.1em 0.5em 0em hsla(0,0%,20%,0.5);
+	text-align: center;
+	border: 1px solid #FFF;
+	display: block;
+	clear: both;
+	width: 22em;
+	margin-top: 0em;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 1em;
+	padding-right: 2em;
+	padding-bottom: 1em;
+	padding-left: 2em;
+    font-size:14px;
+}

@@ -1,0 +1,44 @@
+﻿@model BigFile.DLL.ManageUser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="Content/login.css" rel="stylesheet" type="text/css" />
+    <title>登录</title>
+</head>
+<body>
+    <div class="logcpname">
+        浙江旅游图片库管理后台
+    </div>
+    <div class="clear"></div>
+    @using (Html.BeginForm())
+    {
+        <div id="logincontent">
+            <div class="logblock">
+                <div class="logcinput">                    
+                    <input type="text" class="logintinput" id="tbusername" name="UserName" placeholder="用户名" value="@Model.UserName">
+                </div>
+                <div class="clear"></div>
+                <div class="logcinput">
+                    <input type="password" class="logintinput" id="tbpwd" name="Pwd" placeholder="密码" value="@Model.Pwd">
+                </div>
+                <div class="clear"></div>
+                <div class="logerrorinfo">
+                    @ViewBag.ErrorMsg
+                </div>
+            </div>
+            <input type="submit" class="bulogin" value="登&nbsp;&nbsp; 录" />
+        </div>
+    }
+    <div class="clear"></div>
+    <footer style="text-align:center;padding-top:5em;">
+        浙江省旅游信息中心 版权所有
+    </footer>
+</body>
+</html>
