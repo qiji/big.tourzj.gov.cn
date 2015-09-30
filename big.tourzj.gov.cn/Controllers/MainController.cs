@@ -19,5 +19,18 @@ namespace big.tourzj.gov.cn.Controllers
             return View(syslist);
         }
 
+        public ActionResult Edit(int sysid)
+        {
+            if (sysid == 0)
+            {
+                return View(new BFSysSet());
+                
+            }
+            else
+            {
+                return View(new BLLBFSysSet().Find(sysid));
+            }
+        }
+
     }
 }

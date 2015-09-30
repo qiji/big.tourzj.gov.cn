@@ -1,0 +1,65 @@
+﻿@model BigFile.DLL.BFSysSet
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="mainNav">系统信息编辑</div>
+@using (@Html.BeginForm())
+{
+    <div class="ciline">
+        <div class="cill">
+            系统编号
+        </div>
+        <div class="cilr">
+            @{
+    if (@Model.SysID != 0)
+    {
+        @Html.DisplayFor(id => id.SysID);
+    }
+            }
+        </div>
+    </div>
+
+    <div class="ciline">
+        <div class="cill">
+            系统名称
+        </div>
+        <div class="cilr">
+            <input type="text" name="SysName" value="@Model.SysName">
+        </div>
+    </div>
+    <div class="ciline">
+        <div class="cill">
+            系统名称
+        </div>
+        <div class="cilr">
+            <input type="text" name="SysDesp" value="@Model.SysDesp">
+        </div>
+    </div>
+    <div class="ciline">
+        <div class="cill">
+            加入时间
+        </div>
+        <div class="cilr">
+            @{
+    if (@Model.SysID != 0)
+    {
+        @Html.DisplayFor(datetime => datetime.AddDateTime);
+    }
+            }
+
+
+        </div>
+    </div>
+
+    <div class="ciline">
+        <div class="cill">
+            返回
+        </div>
+        <div class="cilr">
+            <input type="submit" value="保存" />
+        </div>
+    </div>
+}

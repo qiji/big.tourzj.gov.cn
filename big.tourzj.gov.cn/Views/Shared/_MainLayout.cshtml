@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>浙江旅游图片库</title>
+    <link href="~/Content/main.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="logoname">浙江旅游图片库管理</div>
+
+            <div class="top">
+                <nav>
+                    <ul>
+                        <li><a href="#">修改密码</a></li>
+                        <li class="end"><a href="#">账号信息</a></li>
+                    </ul>
+                </nav>
+                <div class="loginfo">
+                    <div class="userinfo">欢迎您 庄严</div>
+                    <div class="logout"><a href="#">退出</a></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </header>
+        <aside>
+            @RenderPage("~/Views/Shared/_LeftMenu.cshtml")
+        </aside>
+        <!--主体-->
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
