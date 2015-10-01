@@ -32,7 +32,7 @@ namespace BigFile.BLL
 
         public static string GetUserName(this IPrincipal user)
         {
-            var claim = ((ClaimsIdentity)user.Identity).FindFirst(ClaimTypes.NameIdentifier);
+            var claim = ((ClaimsIdentity)user.Identity).FindFirst(ClaimTypes.Name);
             return claim == null ? null : claim.Value;
         }
     }

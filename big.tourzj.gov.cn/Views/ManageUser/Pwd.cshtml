@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "修改密码";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="mainNav">密码修改</div>
+@using (@Html.BeginForm())
+{
+    <div class="ciline">
+        <div class="cill">
+            原密码
+        </div>
+        <div class="cilr">
+            <input type="password" name="tboldPwd" value="">
+        </div>
+    </div>
+
+    <div class="ciline">
+        <div class="cill">
+            新密码
+        </div>
+        <div class="cilr">
+            <input type="password" name="tbnewPwd" value="">
+        </div>
+    </div>
+    <div class="ciline">
+        <div class="cill">
+            校  验
+        </div>
+        <div class="cilr">
+            <input type="password" name="tbnewPwd2" value="">
+        </div>
+    </div>
+    <div class="ciline">
+        <div class="cill">
+            &nbsp;
+        </div>
+        <div class="cilr">
+            <input type="submit" value="确定" />
+        </div>
+    </div>
+    <div class="ciline">
+        <div class="cill">
+            &nbsp;
+        </div>
+        <div class="cilr">
+            <div class="errorinfo">
+                @ViewBag.ErrorMsg
+            </div>
+            <div class="hintinfo">
+                @ViewBag.HintMsg
+            </div>
+        </div>
+    </div>
+}

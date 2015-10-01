@@ -2,7 +2,39 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+<div class="mainNav">
+    系统列表
+</div>
+<div class="ciline">
+    <div class="cill">
+        系统名称
+    </div>
+    <div class="cilr">
+        <input type="text" name="tbname" id="tbname" />
+    </div>
+    <div class="cilr">
+        <input type="button" value="查询" onclick="GetSysSetData()">
+    </div>
+    <div class="block_list">
+        <div class="blkl_left">
+            <div class="blkl_l" style="width:20%;text-align:center">系统编号</div>
+            <div class="blkl_l" style="width:30%;text-align:center">系统名称</div>
+            <div class="blkl_r" style="width:50%;text-align:left">系统描述</div>
+        </div>
+        <div class="blkl_right">创建时间</div>
 
-你好，abcdefg
+    </div>
+</div>
+<script>
+    function GetSysSetData() {
+        $.ajax({
+            url: "~/Main/GetData",
+            name: $("tbname").val(),
+            success: function (data) {
 
+            }
+        });
+    }
 
+    GetSysSetData();
+</script>

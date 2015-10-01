@@ -37,5 +37,11 @@ namespace big.tourzj.gov.cn.Controllers
             return Redirect("/Main/Index");
         }
 
+        public ActionResult LoginOut()
+        {
+            UserAuthentication.LoginOut(Request.RequestContext.HttpContext);
+            return Redirect("~/Login/index");
+        }
+
     }
 }

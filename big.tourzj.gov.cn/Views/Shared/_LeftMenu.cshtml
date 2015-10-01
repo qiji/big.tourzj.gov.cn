@@ -2,14 +2,6 @@
 <ul>
     <li> @Html.ActionLink("系统列表", "index", "Main")</li>
     <li class="sdline"></li>
-
-    @*最后一个菜单，不用增加线*@
     <li>@Html.ActionLink("新增系统", "Edit", "Main", new { sysid = 0 }, new { })</li>
 
 </ul>
-
-<script>
-    function menuclick(sender) {
-
-    }
-</script>

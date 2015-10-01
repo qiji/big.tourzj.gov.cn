@@ -1,4 +1,6 @@
-﻿@{
+﻿@using BigFile.BLL;
+
+@{
     Layout = null;
 }
 
@@ -17,15 +19,13 @@
             <div id="logoname">浙江旅游图片库管理</div>
 
             <div class="top">
-                <nav>
-                    <ul>
-                        <li><a href="#">修改密码</a></li>
-                        <li class="end"><a href="#">账号信息</a></li>
-                    </ul>
-                </nav>
+
                 <div class="loginfo">
-                    <div class="userinfo">欢迎您 庄严</div>
-                    <div class="logout"><a href="#">退出</a></div>
+                    <div class="userinfo">欢迎您: @User.GetUserName()</div>
+                    <div class="pwd">@Html.ActionLink("修改密码", "Pwd", "ManageUser")</div>
+                    <div class="logout">
+                        @Html.ActionLink("退出", "LoginOut", "Login")
+                    </div>
                 </div>
             </div>
             <div class="clear"></div>
