@@ -36,6 +36,10 @@ namespace BigFile.DAL
         /// </summary>
         public byte[] BFContent { get; set; }
 
+        /// <summary>
+        /// 输出类型
+        /// </summary>
+        //public string OutType { get; set; }
         public DateTime CrtDateTime { get; set; }
         public DateTime LastViewDateTime { get; set; }
     }
