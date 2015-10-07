@@ -14,23 +14,53 @@
     </div>
     <div class="cilr">
         <input type="button" value="查询" onclick="GetSysSetData()">
+        @*&nbsp;&nbsp;
+            @Html.ActionLink("新增系统", "Edit", "Main", new { sysid = 0 }, new { })*@
     </div>
     <div class="block_list">
-        <div class="blkl_left">
-            <div class="blkl_l" style="width:20%;text-align:center">系统编号</div>
-            <div class="blkl_l" style="width:30%;text-align:center">系统名称</div>
-            <div class="blkl_r" style="width:50%;text-align:left">系统描述</div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" id="tabledata">
+                <thead>
+                    <tr>
+                        <th>系统编号</th>
+                        <th>系统名称</th>
+                        <th>系统描述</th>
+                        <th>创建时间</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
         </div>
-        <div class="blkl_right">创建时间</div>
 
     </div>
 </div>
 <script>
     function GetSysSetData() {
         $.ajax({
-            url: "~/Main/GetData",
-            name: $("tbname").val(),
+            url: "/Main/GetData",
+            data: "key=" + $("#tbname").val(),
+            dataType: "json",
             success: function (data) {
+                var trHTML = "";
+                $.each(data, function (i, d) {
+                    trHTML += "<tr>";
+                    trHTML += "<td>";
+                    trHTML += "<a href='/Main/Edit?sysid=" + d.SysID + "'>" + d.SysID + "</a>";
+                    trHTML += "</td>";
+                    trHTML += "<td>";
+                    trHTML += d.SysName;
+                    trHTML += "</td>";
+                    trHTML += "<td>";
+                    trHTML += d.SysDesp;
+                    trHTML += "</td>";
+                    trHTML += "<td>";
+                    trHTML += d.AddTime;
+                    trHTML += "</td>";
+                    trHTML += "</tr>";
+                });
+                $("#tabledata tbody").html("");
+                $("#tabledata").append(trHTML);
 
             }
         });

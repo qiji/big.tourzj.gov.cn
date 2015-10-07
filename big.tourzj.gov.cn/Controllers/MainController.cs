@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BigFile.BLL;
-using BigFile.DLL;
+using BigFile.DAL;
 
 namespace big.tourzj.gov.cn.Controllers
 {
@@ -15,8 +15,13 @@ namespace big.tourzj.gov.cn.Controllers
 
         public ActionResult Index()
         {
-            var syslist = new BLLBFSysSet().FindList(i => true).OrderByDescending(i => i.AddDateTime);
-            return View(syslist);
+            return View();
+        }
+
+        public ActionResult GetData(string key)
+        {
+            var syslist = new BLLBFSysSet().FindList(i => i.SysName.Contains(key)).OrderByDescending(i => i.AddDateTime);
+            return Json(syslist.ToList().Select(ii => new { ii.SysID, ii.SysName, ii.SysDesp, AddTime = ii.AddDateTime.ToString() }), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Edit(int sysid)
@@ -24,12 +29,34 @@ namespace big.tourzj.gov.cn.Controllers
             if (sysid == 0)
             {
                 return View(new BFSysSet());
-                
+
             }
             else
             {
                 return View(new BLLBFSysSet().Find(sysid));
             }
+        }
+
+        [ActionName("Edit")]
+        [HttpPost]
+        public ActionResult Save(BFSysSet bfsysset)
+        {
+            BLLBFSysSet bllbf = new BLLBFSysSet();
+
+            if (bfsysset.SysID == 0)
+            {
+                bfsysset.AddDateTime = DateTime.Now;
+                bllbf.Add(bfsysset);
+            }
+            else
+            {
+                BFSysSet bf = bllbf.Find(bfsysset.SysID);
+                bf.SysName = bfsysset.SysName;
+                bf.SysDesp = bfsysset.SysDesp;
+                bllbf.UpDate(bf);
+                //TryUpdateModel<BFSysSet>(bfsysset,new string[]{"SysName","SysDesp"});
+            }
+            return Redirect("~/Main/Index");
         }
 
     }

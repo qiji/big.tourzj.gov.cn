@@ -1,18 +1,18 @@
-namespace BigFile.DLL.Migrations
+namespace BigFile.DAL.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BigFile.DLL.BFEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<BigFile.DAL.BFEntities>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(BigFile.DLL.BFEntities context)
+        protected override void Seed(BigFile.DAL.BFEntities context)
         {
             //  This method will be called after migrating to the latest version.
 

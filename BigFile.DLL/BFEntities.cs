@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace BigFile.DLL
+namespace BigFile.DAL
 {
     public class BFEntities : DbContext
     {

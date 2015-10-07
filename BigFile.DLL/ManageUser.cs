@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BigFile.DLL
+namespace BigFile.DAL
 {
     public class ManageUser
     {

@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "big.tourzj.gov.cn", "big.tourzj.gov.cn\big.tourzj.gov.cn.csproj", "{640A229A-676B-4CA5-BF1A-C70948730CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigFile.DLL", "BigFile.DLL\BigFile.DLL.csproj", "{72410A6E-888E-451E-AACF-61AA01B6FF99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigFile.DAL", "BigFile.DLL\BigFile.DAL.csproj", "{72410A6E-888E-451E-AACF-61AA01B6FF99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigFile.BLL", "BigFile.BLL\BigFile.BLL.csproj", "{DAAADFD7-C2A0-4FE1-AA13-E44EAC3EC452}"
 EndProject

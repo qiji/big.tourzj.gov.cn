@@ -192,9 +192,9 @@
       <Project>{daaadfd7-c2a0-4fe1-aa13-e44eac3ec452}</Project>
       <Name>BigFile.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BigFile.DLL\BigFile.DLL.csproj">
+    <ProjectReference Include="..\BigFile.DLL\BigFile.DAL.csproj">
       <Project>{72410a6e-888e-451e-aacf-61aa01b6ff99}</Project>
-      <Name>BigFile.DLL</Name>
+      <Name>BigFile.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

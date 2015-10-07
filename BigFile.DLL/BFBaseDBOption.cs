@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Data.Entity;
 
 
-namespace BigFile.DLL
+namespace BigFile.DAL
 {
     /// <summary>
     /// 基本的数据库操作

@@ -41,7 +41,7 @@ header {
 
 .top {
     float: right;
-    width: 695px;
+    width: 650px;
 }
 
 nav {
@@ -184,7 +184,7 @@ aside {
     float: right;
     height: 600px;
     background-color: #FFF;
-    width: 825px;
+    width: 800px;
     display: block;
     border-radius: 0.4em;
     font-size: 14px;

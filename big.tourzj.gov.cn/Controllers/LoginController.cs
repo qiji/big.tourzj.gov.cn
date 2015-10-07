@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BigFile.BLL;
-using BigFile.DLL;
+using BigFile.DAL;
 
 namespace big.tourzj.gov.cn.Controllers
 {

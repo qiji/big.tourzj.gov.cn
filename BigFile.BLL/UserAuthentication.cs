@@ -8,7 +8,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using BigFile.DLL;
+using BigFile.DAL;
 
 namespace BigFile.BLL
 {
