@@ -43,7 +43,7 @@ namespace big.tourzj.gov.cn.Controllers
                 bfinfo.SysID = sysid;
                 bfinfo.OrignName = fname;
                 bfinfo.ExtName = extname;
-                bfinfo.CrtDateTime = DateTime.Now;
+              bfinfo.LastViewDateTime=  bfinfo.CrtDateTime = DateTime.Now;
                 bfinfo.BFContent = newfile;
                 bllbf.Add(bfinfo);
             }
