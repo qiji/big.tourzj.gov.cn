@@ -51,7 +51,6 @@
     <Compile Include="BFEntities.cs" />
     <Compile Include="BFInfo.cs" />
     <Compile Include="BFSysSet.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ManageUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
