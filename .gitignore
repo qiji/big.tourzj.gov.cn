@@ -1,6 +1,7 @@
 #VS Package
 Packages/
 .gitignore
+*.config
 [b|B]in/
 [o|O]bj/
 

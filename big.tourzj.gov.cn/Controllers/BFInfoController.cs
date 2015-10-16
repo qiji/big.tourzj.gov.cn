@@ -18,8 +18,22 @@ namespace big.tourzj.gov.cn.Controllers
         //
         // GET: /BFInfo/
         [HttpPost]
-        public ActionResult UpLoad(byte[] file, string filename, int sysid, int bfid = 0, int width = 0, int height = 0)
+        public ActionResult UpLoad()
         {
+            Response.AddHeader("Access-Control-Allow-Origin", "*");
+
+            HttpPostedFileBase hf = Request.Files[0];
+            Byte[] file = new Byte[hf.ContentLength];
+            Stream sr = hf.InputStream;//创建数据流对象 
+            sr.Read(file, 0, hf.ContentLength);
+            sr.Close();
+
+            string filename = Request.Files[0].FileName;
+            int sysid = Convert.ToInt32(Request["sysid"]);
+            int bfid = Request["bfid"] == null ? 0 : Convert.ToInt32(Request["bfid"]);
+            int width = 0;
+            int height = 0;
+
             string extname = System.IO.Path.GetExtension(filename).ToLower();
             string fname = System.IO.Path.GetFileNameWithoutExtension(filename);
             byte[] newfile;
@@ -43,7 +57,7 @@ namespace big.tourzj.gov.cn.Controllers
                 bfinfo.SysID = sysid;
                 bfinfo.OrignName = fname;
                 bfinfo.ExtName = extname;
-              bfinfo.LastViewDateTime=  bfinfo.CrtDateTime = DateTime.Now;
+                bfinfo.LastViewDateTime = bfinfo.CrtDateTime = DateTime.Now;
                 bfinfo.BFContent = newfile;
                 bllbf.Add(bfinfo);
             }

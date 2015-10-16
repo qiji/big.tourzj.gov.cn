@@ -166,6 +166,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="js\BigFileJS.js" />
     <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Global.asax" />
