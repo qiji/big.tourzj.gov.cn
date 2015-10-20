@@ -59,5 +59,10 @@ namespace big.tourzj.gov.cn.Controllers
             return Redirect("~/Main/Index");
         }
 
+        public ActionResult Demo()
+        {
+            return View();
+        }
+
     }
 }

@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="mainNav">
+    系统说明
+</div>
+<div class="ciline">
+    <div class="cill">
+        1、
+    </div>
+    <div class="cilr">
+        本服务为 浙江旅游 的大文件的存取服务<br>
+        文件类型包括：图片、视频、文档、电子表格等
+    </div>
+</div>
+
+<div class="ciline">
+    <div class="cill">
+        2、
+    </div>
+    <div class="cilr">
+        调用方式为：<br>
+        上传：可以使用js和代码两个方式<br>
+        下载：使用上传后返回的id放到网址中，就能直接下载了
+    </div>
+</div>
+<div class="ciline">
+    <div class="cill">
+        3、
+    </div>
+    <div class="cilr">
+        <a href="javascript:void(0)" onclick="javascript: $('#divupload1').toggle();">上传方式一：js方式</a>
+        <div style="display:none" id="divupload1">
+            <br>
+            <br>&lt;div&gt;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;file&quot;&nbsp;id=&quot;uploadfile&quot;&nbsp;/&gt;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;button&quot;&nbsp;id=&quot;btnupload&quot;&nbsp;onclick=&quot;inputupload()&quot;&nbsp;value=&quot;上传&quot;&nbsp;/&gt;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;id=&quot;divfileview&quot;&nbsp;style=&quot;display:&nbsp;none&quot;&gt;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+            <br>
+            <br>......
+            <br>
+            <br>//如果已经引入了JQuery，那么可以不用加入这句
+            <br>&lt;script&nbsp;src=&quot;http://libs.baidu.com/jquery/2.0.0/jquery.js&quot;&gt;&lt;/script&gt;
+            <br>
+            <br>......
+            <br>
+            <br>
+            <br>function&nbsp;BigUpLoad(options)&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;domform&nbsp;=&nbsp;$(&quot;#&quot;&nbsp;+&nbsp;options.inputfileid);
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(domform[0].files[0]&nbsp;==&nbsp;null)&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(&quot;请选择文件&quot;);
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;formdata&nbsp;=&nbsp;new&nbsp;FormData();
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;domform[0].files.length;&nbsp;i++)&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;formdata.append(&quot;file&quot;,&nbsp;domform[0].files[i]);
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;//上面为多个文件的传递方式，如果是单个的话，用下面的这个就可以了
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;//formdata.append(&quot;file&quot;,&nbsp;domform[0].files[0]);
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;formdata.append(&quot;id&quot;,&nbsp;options.id);
+            <br>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;$.ajax({
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;&quot;http://big.tourzj.gov.cn/BFInfo/UpLoad&quot;,
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;&quot;Post&quot;,
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;formdata,
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processData:&nbsp;false,
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentType:&nbsp;false,
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success:&nbsp;function&nbsp;(data)&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(data.code&nbsp;==&nbsp;0)&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//执行失败
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//执行成功
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error:&nbsp;function&nbsp;(e)&nbsp;{
+            <br>//失败
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;});
+            <br>}
+        </div>
+        <br />
+        <a href="javascript:void(0)" onclick="javascript: $('#divupload2').toggle();">上传方式二：代码方式</a>
+        <div id="divupload2" style="display:none">
+            基本原理：使用WEBClient来进行上传操作，上传的内容构造一个formdata
+            <br>相关的构造，已经写了一个类
+            <br><a href="~/Content/HTTPWebClient.txt">点击这里</a>进行下载，下载后请修改文件后缀名，就可以使用了
+            <br>
+        </div>
+    </div>
+</div>
+<div class="ciline">
+    <div class="cill">
+        4、
+    </div>
+    <div class="cilr">
+        上传网址:http://big.tourzj.gov.cn/BFInfo/UpLoad/  <br />
+        提交方式:Post<br />
+        上传参数定义：
+        <table border="3">
+            <tr>
+                <td>参数名称</td>
+                <td>必要</td>
+                <td>说明</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>必要</td>
+                <td>系统分配的id</td>
+            </tr>
+            <tr>
+                <td>bfid</td>
+                <td>可选</td>
+                <td>如果是更新，则必须，否则为增加</td>
+            </tr>
+            <tr>
+                <td>width</td>
+                <td>可选</td>
+                <td>如果是图片，则按照给定的width进行缩放</td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td>可选</td>
+                <td>如果是图片，则按照给定的height进行缩放</td>
+            </tr>
+            <tr>
+                <td>file</td>
+                <td>必要</td>
+                <td>上传的二进制文件流</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="ciline">
+    <div class="cill">
+        5、
+    </div>
+    <div class="cilr">
+        返回内容：<br />
+        格式：JSON<br />
+        返回示例：{code:1,message:[40]}<br />
+        说明：code ：0-执行失败 ; 1-执行成功<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message：如果执行失败，则返回失败内容；<br />
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;如果执行成功，上传的是单个文件，则返回服务器上这个文件的id<br />
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;上传的是多个文件，则返回一个整形的数组,存放了多个id<br />
+        <span style="color:red"> 调用服务的用户，拿到id后，应该把id保存起来，以便在显示的时候使用</span>
+    </div>
+</div>
+<div class="ciline">
+    <div class="cill">
+        6、
+    </div>
+    <div class="cilr">
+        下载或显示<br />
+        调用地址：http://bigfile.tourzj.gov.cn/bfinfo/GetFile/??
+        参数说明：
+        <table border="3">
+            <tr>
+                <td>参数名称</td>
+                <td>必要</td>
+                <td>说明</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>必要</td>
+                <td>上传文件后返回的id</td>
+            </tr>
+            <tr>
+                <td>width</td>
+                <td>可选</td>
+                <td>如果是图片，则按照给定的width进行缩放</td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td>可选</td>
+                <td>如果是图片，则按照给定的height进行缩放</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+

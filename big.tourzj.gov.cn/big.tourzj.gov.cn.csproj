@@ -166,7 +166,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Content Include="js\BigFileJS.js" />
+    <Content Include="Content\HTTPWebClient.txt" />
     <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Global.asax" />
@@ -215,6 +215,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ManageUser\Pwd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\big.pubxml" />
+    <Content Include="Views\Main\Demo.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

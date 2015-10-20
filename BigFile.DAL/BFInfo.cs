@@ -32,6 +32,10 @@ namespace BigFile.DAL
         public string OrignName { get; set; }
 
         /// <summary>
+        /// 上传文件的类型
+        /// </summary>
+        public string MineType { get; set; }
+        /// <summary>
         /// 二进制文件
         /// </summary>
         public byte[] BFContent { get; set; }
@@ -41,6 +45,15 @@ namespace BigFile.DAL
         /// </summary>
         //public string OutType { get; set; }
         public DateTime CrtDateTime { get; set; }
+
+        /// <summary>
+        /// 调用次数
+        /// </summary>
+        public int GetCount { get; set; }
+
+        /// <summary>
+        /// 最后调用时间
+        /// </summary>
         public DateTime LastViewDateTime { get; set; }
     }
 }

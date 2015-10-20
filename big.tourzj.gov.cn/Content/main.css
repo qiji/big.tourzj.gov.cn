@@ -30,7 +30,7 @@ header {
     background-color: #69C;
     float: left;
     width: 250px;
-    font-size: 1.2em;
+    font-size: 2em;
     text-align: center;
     border-radius: 0.4em;
     height: 100%;
@@ -182,12 +182,13 @@ aside {
 
 #content {
     float: right;
-    height: 600px;
+    height: 580px;
     background-color: #FFF;
     width: 800px;
     display: block;
     border-radius: 0.4em;
     font-size: 14px;
+    overflow: auto;
 }
 
 
@@ -334,10 +335,10 @@ aside {
     text-align: center;
 }
 
-.blkl_l {    
-    float: left;    
+.blkl_l {
+    float: left;
 }
 
-.blkl_r {    
+.blkl_r {
     float: right;
 }

@@ -11,7 +11,7 @@ namespace big.tourzj.gov.cn.Controllers
     public class LoginController : Controller
     {
         //
-        // GET: /Login/
+        // GET: /Login/        
 
         public ActionResult Index()
         {
