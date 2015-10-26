@@ -38,7 +38,7 @@ namespace BigFile.DAL
         /// <summary>
         /// 二进制文件
         /// </summary>
-        public byte[] BFContent { get; set; }
+        public string OSSFileName { get; set; }
 
         /// <summary>
         /// 输出类型

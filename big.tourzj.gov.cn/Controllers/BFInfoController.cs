@@ -9,13 +9,17 @@ using BigFile.DAL;
 using BigFile.BLL;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using Aliyun.OpenServices.OpenStorageService;
+using System.Net;
 
 namespace big.tourzj.gov.cn.Controllers
 {
     [AllowAnonymous]
     public class BFInfoController : Controller
     {
-
+        private static string AccessKeyID = "";
+        private static string AccessKeySecret = "";
+        private static string BucketName = "";
         [HttpPost]
         public ActionResult UpLoad(int id)
         {
@@ -29,7 +33,7 @@ namespace big.tourzj.gov.cn.Controllers
                 List<int> ret = new List<int>();
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
-                    ret.Add(SaveBF(bllbf, Request.Files[i], id, bfid, width, height));
+                    ret.Add(SaveBF(bllbf, Request.Files[i], id, bfid, width, height).BFID);
                 }
                 if (ret.Count() == 1)
                     return Json(new { code = 1, message = ret[0] });
@@ -41,30 +45,30 @@ namespace big.tourzj.gov.cn.Controllers
                 return Json(new { code = 0, message = e.Message });
             }
         }
-        private int SaveBF(BLLBFInfo bllbf, HttpPostedFileBase hf, int sysid, int bfid, int width, int height)
+        private BFInfo SaveBF(BLLBFInfo bllbf, HttpPostedFileBase hf, int sysid, int bfid, int width, int height)
         {
-            Byte[] file = new Byte[hf.ContentLength];
-            Stream sr = hf.InputStream;//创建数据流对象 
-            sr.Read(file, 0, hf.ContentLength);
-            sr.Close();
-
             string filename = hf.FileName;
             string extname = System.IO.Path.GetExtension(filename).ToLower();
             string fname = System.IO.Path.GetFileNameWithoutExtension(filename);
 
-            byte[] newfile;
+            MemoryStream newfile;
 
             BFInfo bfinfo;
             if (hf.ContentType.ToLower().Contains("image"))
             {
-                MemoryStream ms = new MemoryStream(file);
-                Image image = System.Drawing.Image.FromStream(ms);
+                //MemoryStream ms = new MemoryStream(file);
+                Image image = System.Drawing.Image.FromStream(hf.InputStream);
                 newfile = GetThumbnail(image, width, height);
             }
             else
             {
-                newfile = file;
+                newfile = (MemoryStream)hf.InputStream;
             }
+
+            OssClient oc = new OssClient(AccessKeyID, AccessKeySecret);
+            string newfilename = DateTime.Now.ToString("yyMMdd") + "/" + Guid.NewGuid().ToString();
+            PutObjectResult pr = oc.PutObject(BucketName, newfilename, newfile);
+
             if (bfid == 0)
             {
                 bfinfo = new BFInfo();
@@ -73,7 +77,7 @@ namespace big.tourzj.gov.cn.Controllers
                 bfinfo.ExtName = extname;
                 bfinfo.MineType = hf.ContentType;
                 bfinfo.LastViewDateTime = bfinfo.CrtDateTime = DateTime.Now;
-                bfinfo.BFContent = newfile;
+                bfinfo.OSSFileName = newfilename;
                 bfinfo.GetCount = 0;
                 bllbf.Add(bfinfo);
             }
@@ -84,14 +88,14 @@ namespace big.tourzj.gov.cn.Controllers
                 bfinfo.ExtName = extname;
                 bfinfo.MineType = hf.ContentType;
                 bfinfo.CrtDateTime = DateTime.Now;
-                bfinfo.BFContent = newfile;
+                bfinfo.OSSFileName = newfilename;
                 bfinfo.GetCount = 0;
                 bllbf.UpDate(bfinfo);
             }
-            return bfinfo.BFID;
+            return bfinfo;
         }
 
-        public byte[] GetThumbnail(Image imgSource, int destWidth, int destHeight)
+        public MemoryStream GetThumbnail(Image imgSource, int destWidth, int destHeight)
         {
             MemoryStream ms = new MemoryStream();
             ImageFormat thisformat = imgSource.RawFormat;
@@ -100,7 +104,7 @@ namespace big.tourzj.gov.cn.Controllers
             if (destWidth == 0 && destHeight == 0)
             {
                 imgSource.Save(ms, thisformat);
-                return ms.ToArray();
+                return ms;
             }
             else
             {
@@ -139,13 +143,15 @@ namespace big.tourzj.gov.cn.Controllers
                 encoderParams.Param[0] = encoderParam;
                 imgSource.Dispose();
                 outBmp.Save(ms, thisformat);
-                return ms.ToArray();
+                return ms;
             }
         }
         public ActionResult Delete(int bfid)
         {
             BLLBFInfo bllbfinfo = new BLLBFInfo();
             var bfinfo = bllbfinfo.Find(bfid);
+            OssClient oc = new OssClient(AccessKeyID, AccessKeySecret);
+            oc.DeleteObject(BucketName, bfinfo.OSSFileName);
             bllbfinfo.Delete(bfinfo);
             return View();
         }
@@ -165,24 +171,27 @@ namespace big.tourzj.gov.cn.Controllers
                 bfinfo.GetCount++;
                 bllbfinfo.UpDate(bfinfo);
                 //返回一个二进制流！根据类型，来判断，需要返回的内容！
+                Stream sm = (MemoryStream)new OssClient(AccessKeyID, AccessKeySecret).GetObject(BucketName, bfinfo.OSSFileName).Content;
+                byte[] files = new byte[sm.Length];
+                sm.Read(files, 0, files.Length);
+
                 if (bfinfo.ExtName.ToLower().Contains("jpg") ||
                     bfinfo.ExtName.ToLower().Contains("jpeg"))
                 {
                     if (width == 0 && height == 0)
                     {
-                        return File(bfinfo.BFContent, bfinfo.MineType);
+                        return File(files, bfinfo.MineType);
                     }
                     else
                     {
-                        MemoryStream ms = new MemoryStream(bfinfo.BFContent);
-                        Image image = System.Drawing.Image.FromStream(ms);
+                        sm.Seek(0, SeekOrigin.Begin);
+                        Image image = System.Drawing.Image.FromStream(sm);
                         return File(GetThumbnail(image, width, height), bfinfo.MineType);
                     }
                 }
                 else
                 {
-
-                    return File(bfinfo.BFContent, bfinfo.MineType);
+                    return File(files, bfinfo.MineType);
                 }
             }
         }

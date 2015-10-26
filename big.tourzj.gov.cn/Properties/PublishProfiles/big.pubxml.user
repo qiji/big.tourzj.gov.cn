@@ -6,6 +6,168 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVc0CWuApR0+lkUOLHuPOjgAAAAACAAAAAAAQZgAAAAEAACAAAACTcDGDr8b+dwa4MfVfBx/UQg1EGo/Cid+/evePmZTUJQAAAAAOgAAAAAIAACAAAAA8kK2yyI47zrHZNNZFKYUdz2fFRx5tklNdp45w4Aw3qiAAAACMF7An+/0gcxmPjakfDOKv4MfB7dV28SQHYrhA9xGNREAAAABqeoxbgH2eE9BbFNl27eD0OdRFFW4Whu0vKfZfqNtJgZVdDfe2NC7D7q6U5JW6uUrjRxI6v3k8be5CfCkuycyD</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVc0CWuApR0+lkUOLHuPOjgAAAAACAAAAAAAQZgAAAAEAACAAAACuay1zCJrwDVq2ZpVNkpHMrbDMKDLN5wKdgZimbrMS0AAAAAAOgAAAAAIAACAAAAD7NyIX6G8Dfwkj7BCX/pAQffCHrk2tgsY4rff0jf9yeCAAAABHAu6O7ew7jrghHFYES8BSJQ6Ky3K2m55naz2vS1o5AUAAAAB40MIs8uE7ZR9EgI8696tiPkUCfYW4J1/5F7pRP+Rrx4xrurq2bZf73TprwbvZTe9CpUdhUcyEC7ipthVSVG6d</EncryptedPassword>
+    <_PublishTargetUrl>d:\big</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/big.tourzj.gov.cn.dll">
+      <publishTime>10/21/2015 14:29:34</publishTime>
+    </File>
+    <File Include="bin/BigFile.BLL.dll">
+      <publishTime>10/20/2015 09:27:30</publishTime>
+    </File>
+    <File Include="bin/BigFile.DAL.dll">
+      <publishTime>10/20/2015 09:27:30</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/25/2015 15:50:23</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>09/25/2015 15:50:23</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>09/29/2015 10:23:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>09/29/2015 10:23:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>09/29/2015 10:23:23</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>09/29/2015 10:23:23</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>09/29/2015 10:23:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>09/29/2015 10:24:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>09/29/2015 10:24:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>09/22/2015 15:34:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/29/2015 15:48:04</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>09/29/2015 10:23:23</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.WebRequest.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>09/22/2015 15:34:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>09/22/2015 15:34:11</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>09/22/2015 15:34:13</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>09/22/2015 15:34:13</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>09/22/2015 15:34:13</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>09/22/2015 15:34:13</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>09/22/2015 15:34:12</publishTime>
+    </File>
+    <File Include="Content/HTTPWebClient.txt">
+      <publishTime>10/20/2015 17:24:07</publishTime>
+    </File>
+    <File Include="Content/login.css">
+      <publishTime>09/29/2015 17:11:52</publishTime>
+    </File>
+    <File Include="Content/main.css">
+      <publishTime>10/20/2015 16:10:36</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/22/2015 15:34:03</publishTime>
+    </File>
+    <File Include="Images/b8.gif">
+      <publishTime>09/30/2015 11:23:48</publishTime>
+    </File>
+    <File Include="Images/bg.jpg">
+      <publishTime>09/29/2015 15:53:18</publishTime>
+    </File>
+    <File Include="Images/setting.jpg">
+      <publishTime>09/29/2015 15:53:18</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/16/2015 16:43:52</publishTime>
+    </File>
+    <File Include="Views/Login/Index.cshtml">
+      <publishTime>10/07/2015 10:46:37</publishTime>
+    </File>
+    <File Include="Views/Main/Demo.cshtml">
+      <publishTime>10/20/2015 17:23:04</publishTime>
+    </File>
+    <File Include="Views/Main/Edit.cshtml">
+      <publishTime>10/07/2015 11:28:06</publishTime>
+    </File>
+    <File Include="Views/Main/Index.cshtml">
+      <publishTime>10/07/2015 13:21:22</publishTime>
+    </File>
+    <File Include="Views/ManageUser/Pwd.cshtml">
+      <publishTime>10/01/2015 14:35:58</publishTime>
+    </File>
+    <File Include="Views/Shared/_LeftMenu.cshtml">
+      <publishTime>10/20/2015 15:24:21</publishTime>
+    </File>
+    <File Include="Views/Shared/_MainLayout.cshtml">
+      <publishTime>10/07/2015 13:12:31</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/21/2015 13:51:44</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/21/2015 13:51:44</publishTime>
+    </File>
+  </ItemGroup>
 </Project>
