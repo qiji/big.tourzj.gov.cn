@@ -51,20 +51,15 @@ namespace big.tourzj.gov.cn.Controllers
             string extname = System.IO.Path.GetExtension(filename).ToLower();
             string fname = System.IO.Path.GetFileNameWithoutExtension(filename);
 
-            MemoryStream newfile;
+            Stream newfile = hf.InputStream;
 
             BFInfo bfinfo;
             if (hf.ContentType.ToLower().Contains("image"))
             {
-                //MemoryStream ms = new MemoryStream(file);
                 Image image = System.Drawing.Image.FromStream(hf.InputStream);
                 newfile = GetThumbnail(image, width, height);
             }
-            else
-            {
-                newfile = (MemoryStream)hf.InputStream;
-            }
-
+            newfile.Seek(0, SeekOrigin.Begin);
             OssClient oc = new OssClient(AccessKeyID, AccessKeySecret);
             string newfilename = DateTime.Now.ToString("yyMMdd") + "/" + Guid.NewGuid().ToString();
             PutObjectResult pr = oc.PutObject(BucketName, newfilename, newfile);
@@ -98,6 +93,7 @@ namespace big.tourzj.gov.cn.Controllers
         public MemoryStream GetThumbnail(Image imgSource, int destWidth, int destHeight)
         {
             MemoryStream ms = new MemoryStream();
+
             ImageFormat thisformat = imgSource.RawFormat;
             int sourcewidth = imgSource.Width;
             int sourceheight = imgSource.Height;
@@ -171,27 +167,25 @@ namespace big.tourzj.gov.cn.Controllers
                 bfinfo.GetCount++;
                 bllbfinfo.UpDate(bfinfo);
                 //返回一个二进制流！根据类型，来判断，需要返回的内容！
-                Stream sm = (MemoryStream)new OssClient(AccessKeyID, AccessKeySecret).GetObject(BucketName, bfinfo.OSSFileName).Content;
-                byte[] files = new byte[sm.Length];
-                sm.Read(files, 0, files.Length);
-
-                if (bfinfo.ExtName.ToLower().Contains("jpg") ||
-                    bfinfo.ExtName.ToLower().Contains("jpeg"))
+                MemoryStream ms = new MemoryStream();
+                OssClient oc = new OssClient(AccessKeyID, AccessKeySecret);
+                GetObjectRequest getObjectRequest = new GetObjectRequest(BucketName, bfinfo.OSSFileName);
+                oc.GetObject(getObjectRequest, ms);
+                if (bfinfo.MineType.Contains("image"))
                 {
                     if (width == 0 && height == 0)
                     {
-                        return File(files, bfinfo.MineType);
+                        return File(ms.ToArray(), bfinfo.MineType);
                     }
                     else
                     {
-                        sm.Seek(0, SeekOrigin.Begin);
-                        Image image = System.Drawing.Image.FromStream(sm);
-                        return File(GetThumbnail(image, width, height), bfinfo.MineType);
+                        Image image = System.Drawing.Image.FromStream(ms);
+                        return File(GetThumbnail(image, width, height).ToArray(), bfinfo.MineType);
                     }
                 }
                 else
                 {
-                    return File(files, bfinfo.MineType);
+                    return File(ms.ToArray(), bfinfo.MineType);
                 }
             }
         }
